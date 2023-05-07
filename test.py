@@ -10,7 +10,7 @@ cap = cv2.VideoCapture(0)
 detector = HandDetector(maxHands = 1)
 classifier = Classifier("Model/HSRmodel.h5","Model/labels.txt")
 offset = 20
-imgSize = 300
+imgSize = 200
 counter = 0
 labels = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'del', 'nothing', 'space']
 
@@ -32,7 +32,7 @@ while True:
         if aspectRatio>1:
             k = imgSize/h
             wCal = math.ceil(k*w)
-            imgResize = cv2.resize(imgCrop,(wCal,imgSize))
+            imgResize = cv2.resize(imgCrop,(200,imgSize))
             imgResizeShape = imgResize.shape
             wGap = math.ceil((300 - wCal)/2)
             imgWhite[:,wGap:wCal+wGap] = imgResize
@@ -41,7 +41,7 @@ while True:
         else:
             k = imgSize/w
             hCal = math.ceil(k*h)
-            imgResize = cv2.resize(imgCrop,(imgSize, hCal))
+            imgResize = cv2.resize(imgCrop,(imgSize, 200))
             imgResizeShape = imgResize.shape
             hGap = math.ceil((300 - hCal)/2)
             imgWhite[hGap:hCal+hGap, :] = imgResize
